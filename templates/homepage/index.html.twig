@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% set title = "Accueil" %}
+
+{% block title %} {{ title }} | {{parent()}} {% endblock %}
+
+{% block body %}
+
+    <h1>Bienvenue sur la page {{title}} </h1>
+{% endblock %}
