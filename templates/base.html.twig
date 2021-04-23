@@ -47,10 +47,12 @@
             </div>
         </nav>
 
-        {% block body %}{% endblock %}
-
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>

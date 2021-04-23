@@ -10,4 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.css';
 
 // start the Stimulus application
-import './bootstrap';
+// import './bootstrap';
+
+// Import de jQuery
+import 'jquery';
+
+// Import de popper.js
+import 'popper.js';
+
+// Import de bootstrap.js
+import 'bootstrap';
