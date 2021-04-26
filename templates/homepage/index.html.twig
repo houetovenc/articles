@@ -9,7 +9,7 @@
 
     {# titre de la page d'accueil #}
 
-    <h1>Bienvenue sur la page d'accueil !</h1>
+    <h1 class="text-center p-5 bg-dark text-warning font-weight-bold">Bienvenue sur la page d'accueil !</h1>
 
     {# Carousel #}
 
@@ -21,13 +21,25 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../assets/img/depannage.jpg" class="d-block w-100" alt="Image de dépanneuse">
+                <img src="{{ asset('build/img/depannage.jpg') }}" class="d-block w-100" alt="Image de dépanneuse">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-warning">Besoin d'un dépanneur ?</h5>
+                    <p>Faites appelle à nous ! Nous sommes disponible 24h/24 et 7j/7 !</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img src="../../assets/img/revision.jpg" class="d-block w-100" alt="Image de révision">
+                <img src="{{ asset('build/img/revision.jpg') }}" class="d-block w-100" alt="Image de révision">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-warning">Problème mécanique ?</h5>
+                    <p>En plus du dépannage de véhicule, nous proposons aussi des prestations de montage pneumatique ainsi que des révisions !</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img src="../../assets/img/boutique.jpg" class="d-block w-100" alt="Image de boutique">
+                <img src="{{ asset('build/img/boutique.jpg') }}" class="d-block w-100" alt="Image de boutique">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="text-warning">Accessoire automobile</h5>
+                    <p>Venez voir notre selection d'accessoires automobiles !</p>
+                </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

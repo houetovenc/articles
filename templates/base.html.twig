@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}DepanAuto{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,9 +13,10 @@
     </head>
     <body>
         
+        {# Barre de navigation #}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-            <a class="navbar-brand" href="#">Accueil</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,19 +40,40 @@
                         <a class="dropdown-item" href="#">Faites un devis</a>
                     </div>
                 </li>
-                <!--module de connexion -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Déconnexion</a>
-                </li>
-                <!--Fin de module de connexion-->
+
                 <!--Contact-->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nos Contacts</a>
                 </li>
                 <!-- fin de contact-->
+
+                <!--module de connexion -->
+
+                {# L'utilisateur est anonyme #}
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('profile') }}">Mon panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+                
+
+                {% else %}
+
+                {# L'utilisateur est identifié #}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+
+                {% endif %}
+                <!--Fin de module de connexion-->
+
             </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search">
@@ -60,16 +82,9 @@
             </div>
         </nav>
 
-        <div class="container">
-            {% block body %}{% endblock %}
-        </div>
         
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-
-
-
+            {% block body %}{% endblock %}
+        
 
 <!-- Footer -->
 <footer class="page-footer font-small unique-color-dark">
@@ -131,7 +146,7 @@
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">Votre garage</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Vener nous renctontrez</p>
+        <p>Venez nous renctontrez</p>
         <p>Nos horaires</p>
 
     </div>
@@ -216,6 +231,11 @@
 
 </footer>
 <!-- Footer -->
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
     </body>
 </html>
 
