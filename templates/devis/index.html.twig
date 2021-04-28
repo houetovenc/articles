@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faire un Devis{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {
+    attr: {
+        novalidate: "novalidate"
+    }
+}) }}
+
+    <div class="container">
+
+        <h1>Générer un devis</h1>
+
+        <div class="row">
+            <div class="col-lg-4 offset-2">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_help(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="col-lg-4 offset-2">
+                {{ form_label(form.create_At) }}
+                {{ form_widget(form.create_At) }}
+                {{ form_help(form.create_At) }}
+                {{ form_errors(form.create_At) }}
+            </div>
+
+            <div class="col-lg-4 offset-2">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_help(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="col-lg-4 offset-2">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_help(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 offset-2">
+                {{ form_label(form.price) }}
+                {{ form_widget(form.price) }}
+                {{ form_help(form.price) }}
+                {{ form_errors(form.price) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 offset-2">
+                {{ form_widget(form) }}
+                <button class="btn btn-primary mt-3 mb-3">{{ button_label|default('Générer un devis') }}</button>
+            </div>
+        </div>
+        
+    </div>
+
+{{ form_end(form, {
+    render_rest: false
+}) }}    
+{% endblock %}
