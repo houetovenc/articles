@@ -20,7 +20,7 @@ class Devis
     /**
      * @ORM\Column(type="string", length=40)
      */
-    private $title;
+    private $firstname;
 
     /**
      * @ORM\Column(type="datetime")
@@ -35,7 +35,7 @@ class Devis
     /**
      * @ORM\Column(type="string", length=80)
      */
-    private $name;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -47,14 +47,14 @@ class Devis
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->title;
+        return $this->firstname;
     }
 
-    public function setTitle(string $title): self
+    public function setFirstname(string $firstname): self
     {
-        $this->title = $title;
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -83,14 +83,14 @@ class Devis
         return $this;
     }
 
-    public function getName(): ?string
+    public function getLastname(): ?string
     {
-        return $this->name;
+        return $this->lastname;
     }
 
-    public function setName(string $name): self
+    public function setLastname(string $lastname): self
     {
-        $this->name = $name;
+        $this->name = $lastname;
 
         return $this;
     }

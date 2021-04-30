@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DevisType extends AbstractType
 {
@@ -18,12 +19,17 @@ class DevisType extends AbstractType
         $builder
 
 
-            ->add('title', TextType::class, [
+            ->add('firstname', TextType::class, [
                 'label' => "Votre prénom:",
                 'required' => true,
                 'attr' => [
                     'placeholder' => "Saisir votre prénom"
                 ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Ce champs est obligatoire !"
+                    ])
+                ]
             ])
 
 
@@ -40,12 +46,17 @@ class DevisType extends AbstractType
 
 
 
-            ->add('name', TextType::class, [
+            ->add('lastname', TextType::class, [
                 'label' => "Votre nom: ",
                 'required' => true,
                 'attr' => [
                     'placeholder' => "Saisir votre nom"
                 ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Ce champs est obligatoire !"
+                    ])
+                ]
             ])
 
 
@@ -55,6 +66,11 @@ class DevisType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'placeholder' => "Saisir votre adresse mail"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Ce champs est obligatoire !"
+                    ])
                 ]
             ])
 

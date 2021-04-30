@@ -20,3 +20,4 @@ import 'popper.js';
 
 // Import de bootstrap.js
 import 'bootstrap';
+

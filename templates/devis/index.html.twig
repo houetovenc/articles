@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Faire un Devis{% endblock %}
+{% block title %}Faire un Devis | {{ parent() }}{% endblock %}
 
 {% block body %}
 
@@ -10,16 +10,17 @@
     }
 }) }}
 
+<h1 class="text-center font-weight-bold">Générer un devis</h1>
+
     <div class="container">
 
-        <h1>Générer un devis</h1>
-
         <div class="row">
+            
             <div class="col-lg-4 offset-2">
-                {{ form_label(form.title) }}
-                {{ form_widget(form.title) }}
-                {{ form_help(form.title) }}
-                {{ form_errors(form.title) }}
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+                {{ form_help(form.firstname) }}
+                {{ form_errors(form.firstname) }}
             </div>
 
             <div class="col-lg-4 offset-2">
@@ -30,10 +31,10 @@
             </div>
 
             <div class="col-lg-4 offset-2">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name) }}
-                {{ form_help(form.name) }}
-                {{ form_errors(form.name) }}
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+                {{ form_help(form.lastname) }}
+                {{ form_errors(form.lastname) }}
             </div>
 
             <div class="col-lg-4 offset-2">
@@ -42,6 +43,48 @@
                 {{ form_help(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
+
+            
+            <div class="col-12 mt-4">
+                <h4 class="text-center">Choix des prestations :</h4>
+
+                <div class="col-lg-4 offset-2">
+                    <div class="form-group">
+                        {{ form_label(form_p.montage) }}
+                        {{ form_widget(form_p.montage) }}
+                        {{ form_label(form_p.depannage) }}
+                        {{ form_widget(form_p.depannage) }}
+                    </div>
+                </div>
+
+                <div class="col-lg-4 offset-2">
+                    <div class="form-group">
+                        {{ form_label(form_p.equilibre) }}
+                        {{ form_widget(form_p.equilibre) }}
+                        {{ form_label(form_p.valve) }}
+                        {{ form_widget(form_p.valve) }}
+                    </div>
+                    
+                </div>
+
+                <div class="col-lg-4 offset-2">
+                    <div class="form-group">
+                        {{ form_label(form_p.plaquette) }}
+                        {{ form_widget(form_p.plaquette) }}
+                        {{ form_label(form_p.disque) }}
+                        {{ form_widget(form_p.disque) }}
+                    </div>
+                    
+                </div>
+
+                <div class="col-lg-4 offset-2">
+                    <div class="form-group">
+                        {{ form_label(form_p.vidange) }}
+                        {{ form_widget(form_p.vidange) }}
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-lg-4 offset-2">
@@ -62,5 +105,20 @@
 
 {{ form_end(form, {
     render_rest: false
-}) }}    
+}) }}
+
+<script>
+    
+    const check = document.getElementsByClassName('form-check-input');
+    for(let element of check){
+        element.addEventListener("change", (event) => {
+            let result = +document.getElementById('devis_price').value;
+            const value = +event.target.value;
+            result = event.target.checked ? (result + value) : (result - value);
+            document.getElementById('devis_price').value = result;
+        });
+    }
+
+
+</script>
 {% endblock %}
