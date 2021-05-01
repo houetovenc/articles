@@ -26,7 +26,7 @@ class RdvController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="rdv_new", methods={"GET","POST"})
+     * @Route("/new", name="rdv_new", methods={"HEAD","GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -38,6 +38,8 @@ class RdvController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre RDV a bien été enregistrée !');
 
             return $this->redirectToRoute('rdv_new');
         }
