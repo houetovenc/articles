@@ -7,7 +7,9 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'fullcalendar/main.min.css';
 import './styles/app.css';
+
 
 // start the Stimulus application
 // import './bootstrap';
@@ -20,4 +22,7 @@ import 'popper.js';
 
 // Import de bootstrap.js
 import 'bootstrap';
+
+import 'fullcalendar/main.min.js';
+
 
