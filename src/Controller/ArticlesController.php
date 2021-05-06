@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Form\AddToCartType;
+use App\Manager\CartManager;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,10 +90,30 @@ class ArticlesController extends AbstractController
     /**
      * @Route("/{id}", name="articles_show", methods={"GET"})
      */
-    public function show(Articles $article): Response
+    public function show(Articles $article,  Request $request, CartManager $cartManager): Response
     {
+
+
+        $form = $this->createForm(AddToCartType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $item = $form->getData();
+            $item->setArticles($article);
+        
+            $cart = $cartManager->getCurrentCart();
+            
+            $cart->addItem($item)
+                ->setUpdatedAt(new \DateTime());
+
+            $cartManager->save($cart);
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+        }
+        
         return $this->render('articles/show.html.twig', [
             'article' => $article,
+            'form' => $form->createView(),
         ]);
     }
 

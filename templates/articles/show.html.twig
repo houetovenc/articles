@@ -1,9 +1,26 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 {% block title %}Articles{% endblock %}
 
 {% block body %}
     <h1>Articles</h1>
+
+<div class="container mt-5 mb-5 pt-3 pb-3 bg-white" style="border:5px solid black; border-radius:10px; box-shadow:2px 2px 5px black;">
+    <div class="row" >
+
+        <div class="bloc_1" style="margin-left:50px;">
+        <img src="{{ asset('uploads/' ~ article.path) }}" class="card-img-top" alt="..." style="width:300px; height:300px;   border:1px solid rgb(208 208 208 / 30%);">
+        <p class="sous-texte" style="color: #adb5bd; text-align: center;"> photo non contractuelle </p>
+        </div>
+            <div class="texte"  style="text-align: center; margin-left:50px; place-self: center;">
+
+            <h5 class="card-title">{{ article.name }}</h5>
+            
+            <h6>PRIX: {{ article.price }}<h6>
+
+            </div>
+    </div>
+</div>
 
     <table class="table">
         <tbody>
@@ -39,4 +56,37 @@
     <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
 
     {{ include('articles/_delete_form.html.twig') }}
+{% endblock %} #}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-3 mb-4">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/600x400" alt="{{ article.name }}" class="img-fluid">
+                        </div>
+            
+
+                <div class="col-md-8">
+                    <h1 class="mt-4 mt-md-0">{{ article.name }}</h1>
+                        <h2>{{ article.price }} €</h2>
+                        <hr>
+                    <b>Description:</b>{{ article.decription }}
+                    {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.quantity) }}
+                        {{ form_widget(form.quantity, {'attr': {'class': 'form-control ' ~ (form.quantity.vars.valid ? '' : 'is-invalid')}}) }}
+                        <div class="invalid-feedback">
+                        {{ form_errors(form.quantity) }}
+                    </div>
+                </div>
+                {{ form_widget(form.add, {'attr': {'class': 'btn btn-warning w-25'}}) }}
+                {{ form_end(form) }}
+        </div>
+    </div>
+        
 {% endblock %}

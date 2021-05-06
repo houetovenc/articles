@@ -14,6 +14,7 @@ class Articles
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *  @ORM\OneToMany(targetEntity=OrderItem::class)
      */
     private $id;
 

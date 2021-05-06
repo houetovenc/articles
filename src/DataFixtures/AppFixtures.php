@@ -18,6 +18,7 @@ class AppFixtures extends Fixture
             $articles->setDecription('Description de l\'articles'.$i);
             $articles->setPicture('...');
             $articles->setCreatedAt(new \DateTime());
+            $articles->setPath('image'.$i);
             
             $manager->persist($articles);
 

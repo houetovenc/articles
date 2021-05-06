@@ -42,10 +42,12 @@
                         Boutique
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('articles_new') }}">Nos Produits</a>
+                        <a class="dropdown-item" href="{{ path('articles_index') }}">Nos Produits</a>
                         <a class="dropdown-item" href="#">L'entretien de votre véhicule</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('devis') }}">Faites un devis</a>
+                        <a class="dropdown-item" href="{{ path('maintenancearticles') }}">Maintenance</a>
+
                     </div>
                 </li>
 
@@ -70,6 +72,12 @@
                 
 
                 {% else %}
+                {# panier  #}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('cart') }}">Panier</a>
+                </li>
+
 
                 {# L'utilisateur est identifié #}
                 <li class="nav-item">
